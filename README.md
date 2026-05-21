@@ -16,6 +16,7 @@ The first call to `pipeline("summarization", ...)` downloads the model. Plan ~3 
 ## What you will produce
 
 Committed:
+
 - `summarize.py` — your implementation
 - Updated `README.md` — 1–2 paragraphs documenting model id, corpus version, re-run command (this section is the template; replace it)
 - `summary_predictions.csv` — 120 rows with reference, predicted, and per-summary ROUGE
@@ -43,6 +44,25 @@ make clean        # remove generated outputs
 Open a Pull Request from your working branch into `main`. The autograder runs `make smoke` against the 3-row fixture and validates artifact schemas. PR description requirements are in the integration guide.
 
 ---
+
+## Summarization Evaluation
+
+This project uses the Hugging Face summarization model
+`sshleifer/distilbart-cnn-6-6`, a distilled BART encoder-decoder model
+trained for abstractive summarization on the CNN/DailyMail dataset.
+
+The evaluation corpus contains 120 tech and entertainment news articles
+from Module 6. Reference summaries are stored in
+`data/tech_news_summaries_reference.csv`.
+
+The summarization pipeline generates predicted summaries for each article
+and evaluates them using ROUGE-1, ROUGE-2, and ROUGE-L F1 metrics.
+
+To rerun the full summarization evaluation:
+
+```bash
+python summarize.py
+```
 
 ## License
 
